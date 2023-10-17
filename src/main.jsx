@@ -10,6 +10,10 @@ import Root from './Components/Routes/Root/Root.jsx';
 import Login from './Components/Pages/Login/Login';
 import Register from './Components/Pages/Register/Register';
 import AuthProvider from './Components/Sharde/AuthProvider/AuthProvider';
+import Shop from './Components/Pages/Shop/Shop';
+import Brand from './Components/Pages/Brand/Brand';
+import AddProduct from './Components/Pages/AddProduct/AddProduct';
+import MyCart from './Components/Pages/MyCart/MyCart';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +23,22 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: '/shop',
+        element: <Shop></Shop>
+      },
+      {
+        path: '/brand',
+        element: <Brand></Brand>
+      },
+      {
+        path: '/addproduct',
+        element: <AddProduct></AddProduct>
+      },
+      {
+        path: '/mycart',
+        element: <MyCart></MyCart>
       },
       {
         path: '/login',

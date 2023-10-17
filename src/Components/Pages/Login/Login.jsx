@@ -21,7 +21,10 @@ const Login = () => {
             navigate('/')
         })
         .catch(error =>{
-            setError(error)
+            const errorMessage = error.message;
+            if(errorMessage){
+                setError("Your Email address and password dosen't Match")
+            }
         })
     }
     return (

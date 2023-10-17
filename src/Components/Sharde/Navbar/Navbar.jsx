@@ -8,35 +8,25 @@ const Navbar = () => {
 
     const { users, logOut } = useContext(AuthContext);
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         logOut()
-        .then(()=>{
-            swal("Done!", "Successfully Logout Your Account!", "success");
-        })
-        .catch(error =>{
-            console.error(error)
-        })
+            .then(() => {
+                swal("Done!", "Successfully Logout Your Account!", "success");
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
 
     const navLinks = <>
-
-        {users ?
-
-            <>
-                <NavLink to={'/'}><li><button>Home</button></li></NavLink>
-                <NavLink to={'/'}><li><button>Shop</button></li></NavLink>
-                <NavLink to={'/'}><li><button>Add Product</button></li></NavLink>
-                <NavLink to={'/'}><li><button>My Cart</button></li></NavLink>
-            </>
-            :
-
-            <>
-                <NavLink to={'/'}><li><button>Home</button></li></NavLink>
-                <NavLink to={'/'}><li><button>Shop</button></li></NavLink>
-            </>
-
-        }
+        
+            <NavLink to={'/'}><li><button>Home</button></li></NavLink>
+            <NavLink to={'/shop'}><li><button>Shop</button></li></NavLink>
+            <NavLink to={'/brand'}><li><button>Brand</button></li></NavLink>
+            <NavLink to={'/addproduct'}><li><button>Add Product</button></li></NavLink>
+            <NavLink to={'/mycart'}><li><button>My Cart</button></li></NavLink>
+        
     </>
     return (
         <div className="navbar absolute z-20 text-white">
@@ -62,16 +52,16 @@ const Navbar = () => {
                         <div className="mx-3">
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
-                                    {users?
-                                    <img src={users?.photoURL} />:
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKlmEDmy-tQGB8DvqvpOBQgIqWeo0s1Um2ncr15So&s" />
+                                    {users ?
+                                        <img src={users?.photoURL} /> :
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKlmEDmy-tQGB8DvqvpOBQgIqWeo0s1Um2ncr15So&s" />
                                     }
                                 </div>
                             </label>
                         </div>
                         <button onClick={handleLogout} className="btn">Logout</button>
-                    </>:
-                        <Link to={'/login'}><button className="btn">Login</button></Link>
+                    </> :
+                    <Link to={'/login'}><button className="btn">Login</button></Link>
 
                 }
             </div>
