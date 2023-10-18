@@ -1,31 +1,42 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
+import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const {loginUser} = useContext(AuthContext);
+    const { loginUser,googleLogin } = useContext(AuthContext);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const handleLogin = e =>{
+    const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
         setError('')
         loginUser(email, password)
-        .then(result =>{
-            console.log(result.user)
-            swal("Done!", "Successfully Login Your Account!", "success");
-            navigate('/')
-        })
-        .catch(error =>{
-            const errorMessage = error.message;
-            if(errorMessage){
-                setError("Your Email address and password dosen't Match")
-            }
-        })
+            .then(result => {
+                console.log(result.user)
+                navigate(location?.state ? location?.state : "/")
+                swal("Done!", "Successfully Login Your Account!", "success");
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                if (errorMessage) {
+                    setError("Your Email address and password dosen't Match")
+                }
+            })
+    }
+    const handelGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                console.log(result.user);
+                navigate(location?.state ? location.state : "/")
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className="relative">
@@ -69,8 +80,8 @@ const Login = () => {
                                     Login Your Account
                                 </h3>
                                 <form onSubmit={handleLogin}>
-                                    
-                                    
+
+
                                     <div className="mb-1 sm:mb-2">
                                         <label
                                             htmlFor="email"
@@ -104,7 +115,7 @@ const Login = () => {
                                         />
                                     </div>
                                     <div className="mt-4 mb-2 sm:mb-4">
-                                    {error && <p className="text-red-700">{error}</p>}
+                                        {error && <p className="text-red-700">{error}</p>}
                                         <button
                                             type="submit"
                                             className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
@@ -115,6 +126,15 @@ const Login = () => {
                                     <p className="text-xs text-gray-600 sm:text-sm">
                                         Don't Have A Account Please <Link className='underline' to={'/register'}>Register</Link>  Your Account
                                     </p>
+                                    <div className="mt-4 mb-2 sm:mb-4">
+                                        <button
+                                            onClick={handelGoogleLogin}
+                                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-400 hover:bg-orange-700 focus:shadow-outline focus:outline-none"
+                                        >
+                                            <FaGoogle></FaGoogle>
+                                            <span className='ml-2'>Login With Google</span>
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

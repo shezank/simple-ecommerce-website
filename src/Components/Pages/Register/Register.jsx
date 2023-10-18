@@ -49,10 +49,11 @@ const Register = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
+                        if (data.insertedId){
 
-                        if (data.insertedId)
                             swal("Done!", "Successfully Register Your Account!", "success");
                         navigate('/')
+                        }
                     })
 
 

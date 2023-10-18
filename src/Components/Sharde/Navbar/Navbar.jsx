@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import swal from "sweetalert";
-
+import "./NavBar.css"
 
 const Navbar = () => {
 
@@ -29,7 +29,7 @@ const Navbar = () => {
         
     </>
     return (
-        <div className="navbar absolute z-20 text-white">
+        <div className="navbar bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
