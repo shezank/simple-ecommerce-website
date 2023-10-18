@@ -24,9 +24,9 @@ const AddProduct = () => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    form.reset();
                     swal("Done!", "Successfully Add Your Product!", "success");
                 }
+                form.reset();
             })
     }
     return (
