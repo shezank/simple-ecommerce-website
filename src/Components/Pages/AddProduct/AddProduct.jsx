@@ -13,7 +13,7 @@ const AddProduct = () => {
         const imgurl = form.imgurl.value;
         const product = { name, brandName, type, price, description, rating, imgurl };
         console.log(product);
-        fetch('http://localhost:5000/products', {
+        fetch('https://ali-express-bd-server.vercel.app/products', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

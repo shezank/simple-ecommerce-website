@@ -30,19 +30,19 @@ const router = createBrowserRouter([
       {
         path: '/shop',
         element: <Shop></Shop>,
-        loader: ()=>fetch('http://localhost:5000/products')
+        loader: ()=>fetch('https://ali-express-bd-server.vercel.app/products')
       },
       { 
         path: '/products/:bname',
         element: <Products></Products>,
-        loader: ({params})=>fetch(`http://localhost:5000/products/${params.bname}`)
+        loader: ({params})=>fetch(`https://ali-express-bd-server.vercel.app/products/${params.bname}`)
 
 
       },
       { 
         path: '/product/:id',
         element: <PrivateRoute><ProductsDetails></ProductsDetails></PrivateRoute>,
-        loader: ({params})=>fetch(`http://localhost:5000/product/${params.id}`)
+        loader: ({params})=>fetch(`https://ali-express-bd-server.vercel.app/product/${params.id}`)
       },
       {
         path: '/addproduct',
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: '/mycart',
         element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/orders')
+        loader: ({params})=> fetch(`https://ali-express-bd-server.vercel.app/orders`)
       },
       {
         path: '/login',

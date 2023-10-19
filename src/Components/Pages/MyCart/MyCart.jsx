@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
 
 
 
 const MyCart = () => {
-    const loadOrders = useLoaderData();
-    const [orders, setOrders] = useState(loadOrders);
+    const [orders, setOrders] = useState([]);
+    const {users} = useContext(AuthContext);
+    const {uid} = users;
+    fetch(`https://ali-express-bd-server.vercel.app/orders/${uid}`)
+    .then(res => res.json())
+    .then(data => setOrders(data))
 
     const handeleDelete = id =>{
         console.log(id)
-        fetch(`http://localhost:5000/orders/${id}`,{
+        fetch(`https://ali-express-bd-server.vercel.app/orders/${id}`,{
             method: "DELETE"
         })
         .then(res=> res.json())

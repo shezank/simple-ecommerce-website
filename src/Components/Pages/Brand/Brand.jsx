@@ -5,7 +5,7 @@ import BrandSliders from './BrandSliders';
 const Brand = () => {
     
     const [brands, setBrands] = useState([]);
-    fetch('http://localhost:5000/brands')
+    fetch('https://ali-express-bd-server.vercel.app/brands')
     .then(res => res.json())
     .then(data => setBrands(data))
 

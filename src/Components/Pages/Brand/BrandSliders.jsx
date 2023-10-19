@@ -16,7 +16,7 @@ const BrandSliders = () => {
     const [sliders, setSliders] = useState([]);
     console.log(sliders)
     useEffect(() => {
-        fetch(`http://localhost:5000/sliders/${bname}`)
+        fetch(`https://ali-express-bd-server.vercel.app/sliders/${bname}`)
             .then(res => res.json())
             .then(data => setSliders(data))
     }, [])

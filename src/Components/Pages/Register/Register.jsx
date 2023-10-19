@@ -40,7 +40,7 @@ const Register = () => {
                     displayName: userName,
                     photoURL: photoUrl
                 })
-                fetch('http://localhost:5000/users', {
+                fetch('https://ali-express-bd-server.vercel.app/users', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

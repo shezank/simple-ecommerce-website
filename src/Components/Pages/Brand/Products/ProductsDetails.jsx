@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../Sharde/AuthProvider/AuthProvider';
 
 const ProductsDetails = () => {
     const product = useLoaderData();
+    const {users} = useContext(AuthContext);
+    const {uid} = users;
     const { name, price, brandName, type, description, imgurl } = product;
 
     const handleAddToCart =()=>{
-        const addProduct = { name, price, brandName, type, imgurl };
-        fetch('http://localhost:5000/orders',{
+        const addProduct = { uid, name, price, brandName, type, imgurl };
+        fetch('https://ali-express-bd-server.vercel.app/orders',{
             method: "POST",
             headers: {
                 "content-type": "application/json"
