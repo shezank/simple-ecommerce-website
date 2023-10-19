@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BrandProduct = ({ products }) => {
-    const { name, brandName, type, price, description, rating, imgurl } = products;
+    const { _id, name, brandName, type, price, description, rating, imgurl } = products;
     return (
         <div className="card bg-base-100 shadow-xl ">
             <figure><img className='h-80 w-full' src={imgurl} alt="Shoes" /></figure>
@@ -14,7 +15,7 @@ const BrandProduct = ({ products }) => {
                 <h2 className="card-title">Price: ${price}</h2>
                 <p>{description}</p>
                 <div className="card-actions justify-between mt-6">
-                    <button className="btn btn-primary">Details</button>
+                    <Link to={`/product/${_id}`}><button className="btn btn-primary">Details</button></Link>
                     <button className="btn btn-primary">Update Button</button>
                 </div>
             </div>
