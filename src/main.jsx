@@ -16,12 +16,15 @@ import MyCart from './Components/Pages/MyCart/MyCart';
 import PrivateRoute from './Components/Routes/PrivateRoute/PrivateRoute';
 import Products from './Components/Pages/Brand/Products/Products';
 import ProductsDetails from './Components/Pages/Brand/Products/ProductsDetails';
+import UpdateProduct from './Components/Pages/Brand/UpdateProduct';
+import Error from './Components/Sharde/Error/Error';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <Error></Error>,
     children: [
       {
         path: '/',
@@ -49,9 +52,13 @@ const router = createBrowserRouter([
         element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
+        path: '/updateproduct/:id',
+        element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+        loader: ({params})=>fetch(`https://ali-express-bd-server.vercel.app/product/${params.id}`)
+      },
+      {
         path: '/mycart',
         element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: ({params})=> fetch(`https://ali-express-bd-server.vercel.app/orders`)
       },
       {
         path: '/login',

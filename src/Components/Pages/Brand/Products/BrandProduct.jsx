@@ -16,7 +16,8 @@ const BrandProduct = ({ products }) => {
                 <p>{description}</p>
                 <div className="card-actions justify-between mt-6">
                     <Link to={`/product/${_id}`}><button className="btn btn-primary">Details</button></Link>
-                    <button className="btn btn-primary">Update Button</button>
+                    <Link to={`/updateproduct/${_id}`}><button className="btn btn-primary">Update Button</button></Link>
+                    
                 </div>
             </div>
         </div>

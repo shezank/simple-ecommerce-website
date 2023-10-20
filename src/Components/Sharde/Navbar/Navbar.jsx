@@ -20,12 +20,12 @@ const Navbar = () => {
 
 
     const navLinks = <>
-        
-            <NavLink to={'/'}><li><button>Home</button></li></NavLink>
-            <NavLink to={'/shop'}><li><button>Products</button></li></NavLink>
-            <NavLink to={'/addproduct'}><li><button>Add Product</button></li></NavLink>
-            <NavLink to={'/mycart'}><li><button>My Cart</button></li></NavLink>
-        
+
+        <NavLink to={'/'}><li><button>Home</button></li></NavLink>
+        <NavLink to={'/shop'}><li><button>Products</button></li></NavLink>
+        <NavLink to={'/addproduct'}><li><button>Add Product</button></li></NavLink>
+        <NavLink to={'/mycart'}><li><button>My Cart</button></li></NavLink>
+
     </>
     return (
         <div className="navbar bg-base-100">
@@ -48,6 +48,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 {users ?
                     <>
+                    <p>{users.displayName}</p>
                         <div className="mx-3">
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
