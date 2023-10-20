@@ -16,8 +16,8 @@ const Products = () => {
                         <BrandSliders></BrandSliders>
 
 
-                        <h1 className='text-4xl text-center font-semibold uppercase my-10'>{bname} Products</h1>
-                        <div className='max-w-7xl mx-auto grid md:grid-cols-3 grid-cols-1 gap-6 my-10 '>
+                        <h1 className='lg:text-4xl text-2xl text-center font-semibold uppercase my-10'>{bname} Products</h1>
+                        <div className='lg:max-w-7xl lg:mx-auto mx-10 grid md:grid-cols-3 grid-cols-1 gap-6 my-10 '>
                             {
                                 brandProducts.map(products =>
                                     <BrandProduct

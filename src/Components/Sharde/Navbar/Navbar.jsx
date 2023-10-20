@@ -48,7 +48,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 {users ?
                     <>
-                    <p>{users.displayName}</p>
+                    <p className="hidden lg:flex">{users.displayName}</p>
                         <div className="mx-3">
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
