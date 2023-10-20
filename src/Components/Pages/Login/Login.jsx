@@ -2,9 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-    const { loginUser,googleLogin } = useContext(AuthContext);
+    const { loginUser, googleLogin } = useContext(AuthContext);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,7 +26,7 @@ const Login = () => {
             .catch(error => {
                 const errorMessage = error.message;
                 if (errorMessage) {
-                    setError("Your Email address and password dosen't Match")
+                    toast.error(errorMessage);
                 }
             })
     }
@@ -115,6 +117,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import swal from 'sweetalert';
 import { FaGoogle } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const [error, setError] = useState(null);
     const { createUser, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleRegister = e => {
         e.preventDefault();
@@ -52,14 +55,14 @@ const Register = () => {
                         if (data.insertedId){
 
                             swal("Done!", "Successfully Register Your Account!", "success");
-                        navigate('/')
+                            navigate(location?.state ? location.state : "/")
                         }
                     })
 
 
             })
             .catch(error => {
-                console.log(error.massage)
+                toast.error(error.message)
             })
 
 
@@ -71,7 +74,7 @@ const Register = () => {
                 navigate("/")
             })
             .catch(error => {
-                console.log(error)
+                toast.error(error.message)
             })
     }
 
@@ -183,6 +186,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
