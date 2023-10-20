@@ -30,9 +30,9 @@ const Register = () => {
             return setError("Don't have a capital letter")
 
         }
-        // else if (password.search(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/)) {
-        //     return setError("don't have a special character")
-        // }
+        else if (password.search(/^(?=.*[!@#$%&?]).*$/)) {
+            return setError("don't have a special character")
+        }
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
